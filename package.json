@@ -1,0 +1,49 @@
+{
+  "name": "kod",
+  "main": "gulpfile.babel.js",
+  "private": true,
+  "version": "2.1.1",
+  "author": {
+    "name": "Nikolay Grushkovsky",
+    "email": "hello@example.com",
+    "url": "https://example.com"
+  },
+  "keywords": [
+    "ghost-theme"
+  ],
+  "scripts": {
+    "start": "gulp",
+    "zip": "gulp archive"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "bootstrap": "^4.2.1",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.1",
+    "gulp-zip": "^4.2.0",
+    "jquery": "^3.3.1",
+    "minireset.css": "0.0.3",
+    "reframe.js": "^2.2.5",
+    "sticky-kit": "^1.1.3"
+  },
+  "browserslist": [
+    "> 0.2% in RU",
+    "last 1 version",
+    "ie 10"
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "config": {
+    "posts_per_page": 21
+  }
+}

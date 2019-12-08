@@ -1,0 +1,201 @@
+//
+// Bootstrap
+//
+
+.container
+  +make-container()
+  +make-container-max-widths()
+  +padding($left: 0, $right: 0)
+  overflow-x: hidden
+
+  +media-breakpoint-up(sm)
+    +padding($left: $spacer * 0.5, $right: $spacer * 0.5)
+
+  +media-breakpoint-up(md)
+    +padding($left: $spacer, $right: $spacer)
+
+.grid
+  +make-row()
+
+.cell
+  +make-col-ready()
+  +make-col(12)
+
+//
+// Header
+//
+
+.header
+  +padding($bottom: $spacer * 0.5)
+  background-color: inherit
+
+  +media-breakpoint-up(sm)
+    +padding($top: $spacer * 0.5)
+    +sticky-top()
+
+  +media-breakpoint-up(md)
+    +padding($top: $spacer, $bottom: $spacer)
+
+//
+// Primary
+//
+
+.primary
+  +padding($bottom: $spacer * 3)
+
+// Primary => Sidebar
+
+.sidebar
+  @extend .cell
+
+  +media-breakpoint-up(xl)
+    +make-col(3)
+    +order-last()
+
+.sidebar-list
+  @extend .grid
+
+  .sidebar-list-item
+    @extend .cell
+    +padding($bottom: $spacer * 0.5)
+
+    &:nth-of-type(n+2)
+      display: none
+
+    +media-breakpoint-up(md)
+      +make-col(6)
+      +padding($bottom: $spacer)
+
+      &:nth-of-type(3)
+        display: block
+
+    +media-breakpoint-up(lg)
+      +make-col(4)
+
+      &:nth-of-type(4)
+        display: block
+
+    +media-breakpoint-up(xl)
+      +make-col(12)
+
+      &:nth-of-type(n)
+        display: block
+
+      &:not(:last-of-type)
+        +padding($bottom: $spacer * 0.75)
+
+  .sidebar-list-title
+    @extend .cell
+    +padding($bottom: $spacer * 0.75)
+    display: none
+
+    +media-breakpoint-up(xl)
+      display: block
+
+// Primary => Mainbar
+
+.mainbar
+  @extend .cell
+
+  +media-breakpoint-up(xl)
+    +make-col(9)
+
+.mainbar-list
+  @extend .grid
+
+  .mainbar-list-item
+    @extend .cell
+    +padding($bottom: $spacer * 0.5)
+
+    +media-breakpoint-up(md)
+      +make-col(6)
+      +padding($bottom: $spacer)
+
+    +media-breakpoint-up(lg)
+      +make-col(4)
+
+    &.has-full-width
+      +make-col(12)
+
+  +media-breakpoint-up(lg)
+    &.is-expandable .mainbar-list-item:first-of-type
+      +make-col(12)
+
+    &.is-expandable .mainbar-list-item:nth-of-type(5n+2),
+    &.is-expandable .mainbar-list-item:nth-of-type(5n+3)
+      +make-col(6)
+
+// Primary => Related
+
+.related-list
+  @extend .grid
+
+  .related-list-item
+    @extend .cell
+    +padding($bottom: $spacer * 0.5)
+
+    &:nth-of-type(n+3)
+      display: none
+
+    +media-breakpoint-up(md)
+      +make-col(6)
+      +padding($bottom: $spacer)
+
+    +media-breakpoint-up(lg)
+      +make-col(4)
+
+      &:nth-of-type(3)
+        display: block
+
+    +media-breakpoint-up(xl)
+      +make-col(3)
+
+      &:nth-of-type(4)
+        display: block
+
+//
+// Footer
+//
+
+body
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+.footer
+  +margin($top: auto)
+  +padding($top: $spacer * 3)
+  background-color: $primary
+
+  .night-mode &
+    background-color: $night-mode-dark-gray
+
+.footer-list
+  @extend .grid
+
+  .footer-list-item
+    @extend .cell
+    +padding($bottom: $spacer * 2, $left: $spacer * 2, $right: $spacer * 2)
+
+    &:nth-of-type(2)
+      display: none
+
+    +media-breakpoint-up(md)
+      +make-col(6)
+      +padding($bottom: $spacer * 3)
+
+      &:nth-of-type(2)
+        display: block
+
+    +media-breakpoint-up(lg)
+      +make-col(4)
+      +padding($left: $spacer, $right: $spacer)
+
+      &:nth-of-type(2)
+        display: none
+
+    +media-breakpoint-up(xl)
+      +make-col(3)
+
+      &:nth-of-type(2)
+        display: block

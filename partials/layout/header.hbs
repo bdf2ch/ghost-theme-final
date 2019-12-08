@@ -1,0 +1,39 @@
+
+
+<header class="header">
+
+
+
+  <div class="container">
+
+    
+
+    <div class="navbar box" aria-label="main navigation">
+
+      <a class="navbar-logo" href="{{@blog.url}}">{{> "global/logo"}}</a>
+
+      <a class="navbar-touch" aria-hidden="true"></a>
+
+      <a class="navbar-nav-toggle" role="button" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+
+      <nav class="navbar-nav">
+        {{navigation}}
+        <a class="navbar-night-mode-toggle" aria-hidden="true">
+          <i class="far fa-moon"></i><span> &nbsp; Ночной режим</span>
+        </a>
+        <div class="navbar-social">
+          {{> "global/social" _icons="true"}}
+        </div>
+        <div class="navbar-misc">
+          <a class="misc-item" href="/about">О нас</a>
+          <a class="misc-item" href="/ads">Реклама</a>
+        </div>
+      </nav>
+
+    </div>
+  </div>
+</header>

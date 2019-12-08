@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8">
+  <title>{{meta_title}}</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {{#post}}
+  {{#if feature_image}}
+    <meta name="relap-image" content="{{img_url feature_image size="m" absolute="true"}}">
+  {{/if}}
+  {{/post}}
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{asset "apple-touch-icon.png"}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{asset "favicon-32x32.png"}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{asset "favicon-16x16.png"}}">
+  <link rel="manifest" href="{{asset "site.webmanifest"}}">
+  <link rel="mask-icon" href="{{asset "safari-pinned-tab.svg"}}" color="#008dcd">
+  <link rel="stylesheet" href="{{asset "styles/all.css"}}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <script type="text/javascript">
+        var nightModeName = 'night-mode';
+        if (localStorage.getItem(nightModeName) == 'true') {
+            document.documentElement.classList.add(nightModeName);
+        }
+
+        var $jq = jQuery.noConflict();
+        $jq(document).ready(() => {
+            const galleries = $jq('.kg-gallery-card');
+            for (var i = 0; i < galleries.length; i++) {
+                $jq(galleries[i]).hide();
+                const container = document.createElement('div');
+                container.classList.add('fotorama');
+                const images = $jq(galleries[i]).find('img');
+                $jq(container).append(images);
+                $jq(galleries[i]).after(container);
+                const fotoramaDiv = $jq(container).fotorama();
+                const fotorama = fotoramaDiv.data('fotorama');
+                fotorama.setOptions({
+                    width: 800,
+                    maxwidth: '100%',
+                    ratio: 16/9,
+                    allowfullscreen: true,
+                    nav: 'thumbs'
+                });
+                $jq(container).after('<br>');
+            }
+        });
+    </script>
+  {{ghost_head}}
+</head>
+<body>
+
+  <div id="snowfall" style="display: none;" aria-hidden="true">
+    <div class="snow is-near"></div>
+    <div class="snow is-near is-alt"></div>
+    <div class="snow is-mid"></div>
+    <div class="snow is-mid is-alt"></div>
+    <div class="snow is-far"></div>
+    <div class="snow is-far is-alt"></div>
+  </div>
+
+  <!--[if lte IE 9]>
+    <p class="box has-x-padding-5 has-y-padding-4">Вы используете <strong>устаревший</strong> браузер. Пожалуйста, <a class="text is-primary" href="https://browsehappy.com/" rel="nofollow">обновите ваш браузер</a>, чтобы улучшить пользовательский опыт и безопасность.</p>
+  <![endif]-->
+
+  {{> "layout/header"}}
+
+  <div class="primary">
+    <div class="container">
+      <div class="grid">
+        {{> "layout/sidebar"}}
+        {{{body}}}
+      </div>
+      {{> "layout/related"}}
+    </div>
+  </div>
+
+  {{> "layout/footer"}}
+
+  <div class="back-to-top" style="display: none;">
+    <span><i class="fas fa-long-arrow-alt-up"></i></span>
+  </div>
+
+  {{#if pagination.pages}}
+    <script>
+      var maxPages = '{{pagination.pages}}';
+    </script>
+  {{/if}}
+  <script src="{{asset "scripts/all.js"}}"></script>
+  {{ghost_foot}}
+
+</body>
+</html>

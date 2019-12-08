@@ -1,0 +1,135 @@
+.post-wrapper
+  @each $bp, $spacing in $post-content-spacing
+    +media-breakpoint-up($bp)
+      +padding($spacing * 0.75 $spacing)
+
+      .kg-width-wide,
+      .kg-width-full
+        +margin($left: -$spacing, $right: -$spacing)
+
+        figcaption
+          +padding($left: $spacing, $right: $spacing)
+
+.post-meta
+  align-items: center
+  display: flex
+  white-space: nowrap
+
+.post-tag
+  +margin($right: $spacer * 1.25)
+  +padding($spacer * 0.25 $spacer)
+  background-color: $primary
+  border-radius: $global-border-radius
+
+.post-content
+  @each $bp, $decs in $post-content-sizes
+    +media-breakpoint-up($bp)
+      @each $prop, $val in $decs
+        #{$prop}: $val
+        @if $prop == 'line-height'
+          @at-root .post-title
+            +margin($bottom: round($val * 0.5))
+          @at-root .post-meta
+            +margin($bottom: round($val * 0.75))
+          h1, h2, h3, h4, h5, h6
+            +margin($bottom: round($val * 0.75))
+          p, blockquote
+            +margin($bottom: $val)
+          figure
+            +margin($top: round($val * 1.25), $bottom: round($val * 1.75))
+
+  @for $i from 1 through 6
+    h#{$i}
+      +text-size($i)
+
+  figure
+    align-items: center
+    display: flex
+    flex-direction: column
+
+  figcaption
+    +margin($top: 1em)
+    color: $dark-gray
+    font-size: calc(1em - 2px)
+    line-height: $global-line-height
+    text-align: center
+
+    .night-mode &
+      color: $night-mode-light-gray
+
+  iframe, .twitter-tweet, .instagram-media
+    +margin($top: 0 !important, $bottom: 0 !important)
+    display: block !important
+    width: 100% !important
+
+  .kg-gallery-card
+    display: none
+
+  .kg-gallery-container
+    display: flex
+    flex-direction: column
+    max-width: 848px
+    width: 100vw
+
+  .kg-gallery-row
+    display: flex
+    flex-direction: row
+    justify-content: center
+
+  .kg-gallery-image img
+    display: block
+    height: 100%
+    margin: 0
+    width: 100%
+
+  .kg-gallery-row:not(:first-of-type)
+    margin: 0.75em 0 0 0
+
+  .kg-gallery-image:not(:first-of-type)
+    margin: 0 0 0 0.75em
+
+  h1, h2, h3, h4, h5, h6
+    +margin($top: 1em)
+    font-weight: $global-font-weight-bold
+
+  hr
+    +margin($top: 2.5em, $bottom: 2.5em)
+    background-color: $light-gray
+    border: none
+    height: 2px
+
+  mark
+    background-color: $light-gray
+    color: inherit
+
+    .night-mode &
+      background-color: rgba($white, 0.1)
+
+  blockquote
+    +padding($left: 1.5em, $right: 1.5em)
+    border-left: 3px solid $secondary
+    font-style: italic
+
+  a
+    box-shadow: 0 1px $secondary
+    color: $black
+
+    &:hover
+      color: $primary
+
+    .night-mode &
+      box-shadow: 0 1px $primary
+      color: $white
+
+      &:hover
+        color: $secondary
+
+  ul
+    list-style-type: disc
+
+  ul, ol
+    list-style-position: inside
+
+.post-title
+  +text-size(1)
+  font-weight: $global-font-weight-bold

@@ -1,0 +1,33 @@
+.back-to-top
+  +media-breakpoint-up(xl)
+    +fixed-top(0)
+    background-color: rgba($black, 0.01)
+    height: 100%
+    justify-content: center
+    left: 0
+    position: fixed
+    width: 60px
+
+    .night-mode &
+      background-color: rgba($white, 0.01)
+
+    span
+      +padding($top: $spacer)
+      color: rgba($black, 0.02)
+      font-size: 40px
+
+      .night-mode &
+        color: rgba($white, 0.02)
+
+    &:hover
+      background-color: rgba($black, 0.03)
+      cursor: pointer
+
+      .night-mode &
+        background-color: rgba($white, 0.03)
+
+      span
+        color: rgba($black, 0.06)
+
+        .night-mode &
+          color: rgba($white, 0.06)

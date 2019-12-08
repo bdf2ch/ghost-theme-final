@@ -1,0 +1,97 @@
+// Colors
+
+$white:        #fff;
+$white-gray:   #f3f4f6;
+$light-gray:   #e5eff5;
+$medium-gray:  #c5d2d9;
+$dark-gray:    #738a94;
+$black-gray:   #15171a;
+$black:        #000;
+
+$primary:      #008dcd;
+$secondary:    #3eb0ef;
+$danger:       #f05230;
+$warning:      #fecd35;
+$success:      #a4d037;
+
+$color-palette: (
+  primary: $primary,
+  secondary: $secondary,
+  danger: $danger,
+  warning: $warning,
+  success: $success,
+  white: $white,
+  black: $black
+);
+
+$overlay: scale-color(mix($primary, blue, 90%), $lightness: -30%);
+
+$night-mode-white-gray: #ccc;
+$night-mode-light-gray: #999;
+$night-mode-dark-gray: #363636;
+$night-mode-black-gray: #2b2b2b;
+
+// Grid
+
+$spacer: 16px;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 356px,
+  md: 592px,
+  lg: 880px,
+  xl: 1168px
+);
+$container-max-widths: (
+  sm: 592px,
+  md: 728px,
+  lg: 952px,
+  xl: 1168px
+);
+$grid-columns: 12;
+$grid-gutter-width: $spacer;
+
+// Global
+
+$global-background:           $white-gray;
+$global-color:                $black-gray;
+$global-selection:            rgba($primary, 0.25);
+
+$global-font-family:          Roboto, sans-serif;
+$global-font-size:            16px;
+$global-font-weight-bold:     500;
+$global-font-weight-normal:   400;
+$global-line-height:          1.5;
+
+$global-border-radius:        $spacer * 0.125;
+$global-box-shadow:           0 0 $spacer * 0.125 rgba($black, 0.05), 0 1px rgba($black, 0.02);
+$global-box-shadow-hover:     0 $spacer * 0.125 $spacer * 0.5 rgba($black, 0.08), 0 0 1px rgba($black, 0.05);
+$global-transition-duration:  200ms;
+
+// Components
+
+$navbar-height: $spacer * 3.25;
+$navbar-logo-height: 30px;
+$post-content-sizes: (
+  xs: (font-size: 15px, line-height: 22px),
+  md: (font-size: 15px, line-height: 24px),
+  lg: (font-size: 17px, line-height: 27px)
+);
+$post-content-spacing: (
+  xs: $spacer * 1.25,
+  sm: $spacer * 1.5,
+  md: $spacer * 2.5,
+  lg: $spacer * 3.75
+);
+
+// Elements
+
+$text-sizes: (
+  1: (font-size: 33px, line-height: 1.3),
+  2: (font-size: 29px, line-height: 1.3),
+  3: (font-size: 25px, line-height: 1.3),
+  4: (font-size: 21px, line-height: 1.4),
+  5: (font-size: 17px, line-height: 1.4),
+  6: (font-size: 15px, line-height: 1.4),
+  7: (font-size: 13px, line-height: 1.5),
+  8: (font-size: 11px, line-height: 1.5)
+);

@@ -1,0 +1,47 @@
+// Styles from ghost-admin.css should be copied to the end of vendor file
+
+@import 'utilities/variables'
+@import 'utilities/mixins'
+
+@import 'node_modules/bootstrap/scss/functions.scss'
+@import 'node_modules/bootstrap/scss/variables.scss'
+@import 'node_modules/bootstrap/scss/mixins.scss'
+
+@import 'base/fonts'
+
+$max-width: 728px
+
+.gh-editor-title
+  +text-size(1, $important: true)
+  font-family: $global-font-family !important
+  font-weight: $global-font-weight-bold !important
+  max-width: $max-width !important
+
+.koenig-editor
+  max-width: $max-width !important
+
+  *
+    font-family: $global-font-family !important
+
+  blockquote, figcaption, li, ol, p, pre, ul, a, abbr, code, em, mark
+    font-weight: $global-font-weight-normal !important
+
+  h1, h2, h3, h4, h5, h6, b, strong
+    font-weight: $global-font-weight-bold !important
+
+  @for $i from 1 through 6
+    h#{$i}
+      +text-size($i, $important: true)
+
+  blockquote, li, ol, p, pre, ul, a, abbr, code, em, mark
+    @each $bp, $decs in $post-content-sizes
+      +media-breakpoint-up($bp)
+        @each $prop, $val in $decs
+          #{$prop}: $val !important
+
+  figcaption
+    font-size: calc(1em - 2px)
+    line-height: $global-line-height
+
+.gh-editor-title, .koenig-editor
+  +antialiasing()

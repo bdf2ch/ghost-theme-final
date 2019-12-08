@@ -1,0 +1,194 @@
+// Styles from amp-custom.css should be copied to the amp.hbs file:
+// <style amp-custom> ... </style>
+
+@import 'utilities/variables'
+@import 'utilities/mixins'
+
+@import 'node_modules/minireset.css/minireset.sass'
+
+//
+// Generic
+//
+
+::selection
+  background-color: $global-selection
+  text-shadow: none
+
+html
+  +antialiasing()
+  font-family: $global-font-family
+  font-size: $global-font-size
+  font-weight: $global-font-weight-normal
+  line-height: $global-line-height
+
+body
+  background-color: $white
+  color: $global-color
+
+strong, b
+  font-weight: $global-font-weight-bold
+
+a
+  color: inherit
+  text-decoration: none
+
+ol
+  list-style-position: inside
+
+pre
+  overflow: auto
+
+//
+// Layout
+//
+
+.container
+  +margin($left: auto, $right: auto)
+  +padding($left: $spacer, $right: $spacer)
+  max-width: map-get($container-max-widths, sm)
+
+.header
+  +margin($bottom: $spacer * 1.25)
+  background-color: $primary
+
+//
+// Elements
+//
+
+.svg
+  display: inline-block
+  fill: currentColor
+  vertical-align: middle
+
+  &.is-logo
+    height: $navbar-logo-height
+
+//
+// Components
+//
+
+.navbar
+  $padding: ($navbar-height - $navbar-logo-height) / 2
+  +padding($top: $padding, $bottom: $padding)
+
+.navbar-logo
+  +no-user-select()
+  color: $white
+  cursor: pointer
+
+  span
+    +padding($left: $spacer)
+    letter-spacing: 0.2px
+
+  svg,
+  span
+    display: inline-block
+    vertical-align: middle
+
+//
+// Post
+//
+
+.post-meta
+  color: $primary
+  font-weight: $global-font-weight-bold
+  white-space: nowrap
+
+.post-tag,
+.post-author
+  +margin($bottom: $spacer * 0.5)
+  font-size: 15px
+
+.post-date
+  +margin($bottom: $spacer)
+  font-size: 13px
+
+.post-tag,
+.post-author,
+.post-date
+  display: inline-block
+
+.post-title
+  +margin($bottom: $spacer * 0.5)
+
+.post-content
+  @each $prop, $val in map-get($post-content-sizes, xs)
+    #{$prop}: $val
+    @if $prop == 'line-height'
+      h1, h2, h3, h4, h5, h6
+        +margin($bottom: round($val * 0.75))
+      p, blockquote
+        +margin($bottom: $val)
+      figure
+        +margin($top: round($val * 1.25), $bottom: round($val * 1.75))
+
+  @for $i from 1 through 6
+    h#{$i}
+      +text-size($i)
+
+  figcaption
+    +margin($top: 1em)
+    color: $dark-gray
+    font-size: calc(1em - 2px)
+    line-height: $global-line-height
+
+  .kg-gallery-container
+    display: flex
+    flex-direction: column
+    max-width: map-get($container-max-widths, sm)
+    width: 100vw
+
+  .kg-gallery-row
+    display: flex
+    flex-direction: row
+    justify-content: center
+
+  .kg-gallery-image img
+    display: block
+    height: 100%
+    margin: 0
+    width: 100%
+
+  .kg-gallery-row:not(:first-of-type)
+    margin: 0.75em 0 0 0
+
+  .kg-gallery-image:not(:first-of-type)
+    margin: 0 0 0 0.75em
+
+  .kg-width-wide,
+  .kg-width-full
+    +margin($left: -$spacer, $right: -$spacer)
+
+    figcaption
+      +padding($left: $spacer, $right: $spacer)
+
+  h1, h2, h3, h4, h5, h6
+    +margin($top: 1em)
+    font-weight: $global-font-weight-bold
+
+  hr
+    +margin($top: 2.5em, $bottom: 2.5em)
+    background-color: $light-gray
+    border: none
+    height: 2px
+
+  mark
+    background-color: $light-gray
+    color: inherit
+
+  blockquote
+    +padding($left: 1.5em, $right: 1.5em)
+    border-left: 3px solid $secondary
+    font-style: italic
+
+  a
+    box-shadow: 0 1px $secondary
+    color: $black
+
+    &:hover
+      color: $primary
+
+.post-title
+  @each $prop, $val in map-get($text-sizes, 1)
+    #{$prop}: $val
+  font-weight: $global-font-weight-bold

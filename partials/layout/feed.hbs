@@ -1,0 +1,11 @@
+<main class="mainbar">
+    {{> "global/featured-posts"}}
+    <div class="mainbar-list{{#if _expand}} is-expandable{{/if}} js-feed">
+        {{#foreach posts}}
+            {{> "global/post-card" _layout="mainbar-list-item"}}
+        {{/foreach}}
+    </div>
+
+    {{ pagination }}
+
+</main>

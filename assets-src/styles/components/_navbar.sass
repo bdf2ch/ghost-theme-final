@@ -1,0 +1,273 @@
+.navbar
+  display: flex
+  flex-wrap: wrap
+
+.navbar-logo
+  +no-user-select()
+  $size: $navbar-height
+  align-items: center
+  color: $primary
+  cursor: pointer
+  display: flex
+  height: $size
+  justify-content: center
+  width: $size
+
+.navbar-touch
+  +no-user-select()
+  cursor: pointer
+  flex: 1
+  touch-action: none
+  width: 100%
+
+  +media-breakpoint-up(lg)
+    display: none
+
+.navbar-nav-toggle
+  +margin($left: auto)
+  +no-user-select()
+  $size: $navbar-height
+  cursor: pointer
+  display: block
+  height: $size
+  position: relative
+  user-select: none
+  width: $size
+
+  span
+    $width: 24px
+    background-color: $primary
+    display: block
+    height: 2px
+    left: calc(50% - #{$width / 2})
+    position: absolute
+    transform-origin: center
+    transition: transform $global-transition-duration
+    width: $width
+
+    &:nth-of-type(1)
+      top: calc(50% - 8px)
+
+    &:nth-of-type(2)
+      top: calc(50% - 1px)
+
+    &:nth-of-type(3)
+      top: calc(50% + 6px)
+
+  &.is-active
+    span
+      &:nth-of-type(1)
+        transform: translateY(7px) rotate(45deg)
+
+      &:nth-of-type(2)
+        opacity: 0
+
+      &:nth-of-type(3)
+        transform: translateY(-7px) rotate(-45deg)
+
+  +media-breakpoint-up(lg)
+    display: none
+
+// Navigation
+
+.navbar-nav
+  +margin($left: auto)
+  display: none
+  line-height: $navbar-height
+  width: 100%
+
+  &.is-active
+    display: flex
+    flex-direction: column
+    text-align: center
+
+  &,
+  &.is-active
+    +media-breakpoint-up(lg)
+      display: flex
+      flex-direction: row
+      width: auto
+
+.navbar-nav .nav-title,
+.navbar-social .social-title
+  color: $dark-gray
+  font-size: 15px
+  letter-spacing: 0.5px
+  line-height: $navbar-height * 0.75
+
+  .night-mode &
+    color: $night-mode-light-gray
+
+  +media-breakpoint-up(lg)
+    display: none
+
+.navbar-nav .nav-item
+  font-size: 17px
+  font-weight: $global-font-weight-bold
+
+  &.is-active
+    color: $primary
+
+  &:hover
+    background-color: $primary
+    color: $white
+
+  .night-mode &
+    color: $white
+
+    &.is-active
+      color: $secondary
+
+  +media-breakpoint-up(lg)
+    +padding($left: $spacer * 1.25, $right: $spacer * 1.25)
+    font-size: 15px
+
+    &.is-active
+      box-shadow: inset 0 -2px $primary
+
+      .night-mode &
+        box-shadow: inset 0 -2px $secondary
+
+.navbar-social .social-list
+  +padding($spacer * 0.75 $spacer * 1.25)
+  display: flex
+
+  +media-breakpoint-up(lg)
+    display: none
+
+.navbar-social .social-item
+  +text-size(2)
+  color: $primary
+  flex: 1
+
+// Miscellaneous
+
+.navbar-misc
+  +padding($bottom: $spacer, $left: $spacer, $right: $spacer)
+  display: flex
+
+  +media-breakpoint-up(lg)
+    display: none
+
+.navbar-misc .misc-item
+  color: $primary
+  flex: 1
+  font-size: 17px
+  font-weight: $global-font-weight-bold
+
+// Night Mode Toggle
+
+.navbar-night-mode-toggle
+  +margin($spacer $spacer * 1.5)
+  background-color: $light-gray
+  border-radius: $global-border-radius
+  border: 1px solid rgba($primary, 0.1)
+  box-shadow: inset 0 1px rgba($white, 0.25)
+  cursor: pointer
+  font-size: 17px
+  font-weight: $global-font-weight-bold
+  text-shadow: 0 1px rgba($white, 0.5)
+
+  .night-mode &
+    background-color: $primary
+    border-color: rgba($black, 0.25)
+    color: $white
+    text-shadow: none
+
+  +media-breakpoint-up(lg)
+    +margin(0)
+    +no-user-select()
+    $size: $navbar-height
+    align-items: center
+    background-color: rgba($black, 0.01)
+    border: none
+    border-left: 1px solid rgba($black, 0.03)
+    border-radius: 0
+    box-shadow: none
+    display: flex
+    font-size: 21px
+    height: $size
+    justify-content: center
+    width: $size
+
+    .night-mode &
+      background-color: rgba($white, 0.01)
+      border-color: rgba($white, 0.03)
+
+    span
+      display: none
+
+// Snowfall Toggle & Snowfall
+
+.navbar-snowfall-toggle
+  display: none
+
+  +media-breakpoint-up(lg)
+    +no-user-select()
+    $size: $navbar-height
+    align-items: center
+    background-color: rgba($black, 0.01)
+    border-left: 1px solid rgba($black, 0.03)
+    cursor: pointer
+    display: flex
+    font-size: 21px
+    height: $size
+    justify-content: center
+    width: $size
+
+    .night-mode &
+      background-color: rgba($white, 0.01)
+      border-color: rgba($white, 0.03)
+
+$s--near: 10s
+$s--mid: $s--near * 2
+$s--far: $s--near * 3
+$ease--out-quad: cubic-bezier(.25, .46, .450, .94)
+
+#snowfall
+  +fixed-top(0)
+  height: 100%
+  max-width: 100%
+  overflow: hidden
+  pointer-events: none
+  width: 100%
+
+.snow
+  +fixed-top(0)
+  animation: falling linear infinite both
+  bottom: 0
+  left: 0
+  pointer-events: none
+  right: 0
+  transform: translate3D(0, -100%, 0)
+
+  &.is-near
+    animation-duration: $s--near
+    background-image: url('https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-large-075d267ecbc42e3564c8ed43516dd557.png')
+    background-size: contain
+
+    & + &.is-alt
+      animation-delay: ($s--near / 2)
+
+  &.is-mid
+    animation-duration: $s--mid
+    background-image: url('https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-medium-0b8a5e0732315b68e1f54185be7a1ad9.png')
+    background-size: contain
+
+    & + &.is-alt
+      animation-delay: ($s--mid / 2)
+
+  &.is-far
+    animation-duration: $s--far
+    background-image: url('https://dl6rt3mwcjzxg.cloudfront.net/assets/snow/snow-small-1ecd03b1fce08c24e064ff8c0a72c519.png')
+    background-size: contain
+
+    & + &.is-alt
+      animation-delay: ($s--far / 2)
+
+@keyframes falling
+  0%
+    transform: translate3D(-7.5%, -100%, 0)
+
+  100%
+    transform: translate3D(7.5%, 100%, 0)

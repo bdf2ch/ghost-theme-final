@@ -1,0 +1,25 @@
+{{#get "posts" include="tags" slug=_slug as |post|}}
+  {{#post}}
+
+    <div class="sidebar-list-item">
+      <a class="box has-x-padding-5 has-y-padding-4" href="{{url}}">
+
+        {{#if ../../_important}}
+          <p class="text is-8 is-primary is-uppercased is-truncated is-spaced">
+            <strong>Важная новость</strong> &nbsp; <i class="fas fa-bolt"></i>
+          </p>
+        {{/if}}
+
+        <p class="text is-6{{^if ../../_important}} is-spaced{{/if}}">{{title}}</p>
+
+        {{^if ../../_important}}
+          <p class="text is-7 is-primary is-truncated">
+            {{primary_tag.name}}, <time datetime="{{date published_at format="YYYY-MM-DD"}}">{{date published_at format="DD.MM"}}</time>
+          </p>
+        {{/if}}
+
+      </a>
+    </div>
+
+  {{/post}}
+{{/get}}

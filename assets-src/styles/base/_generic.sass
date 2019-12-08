@@ -1,0 +1,53 @@
+::selection
+  background-color: $global-selection
+  text-shadow: none
+
+html
+  +antialiasing()
+  font-family: $global-font-family
+  font-size: $global-font-size
+  font-weight: $global-font-weight-normal
+  line-height: $global-line-height
+
+body
+  background-color: $global-background
+  color: $global-color
+
+  .night-mode &
+    background-color: $night-mode-black-gray
+    color: $night-mode-white-gray
+
+strong, b
+  font-weight: $global-font-weight-bold
+
+a
+  color: inherit
+  text-decoration: none
+
+img
+  display: inline-block
+  vertical-align: middle
+
+pre
+  overflow: auto
+
+textarea
+  border-radius: $global-border-radius
+  height: auto
+  min-height: 5rem
+
+select
+  border-radius: $global-border-radius
+  box-sizing: border-box
+  width: 100%
+
+button,
+input,
+optgroup,
+select,
+textarea
+  font-family: inherit
+
+video
+  height: auto
+  width: 100%

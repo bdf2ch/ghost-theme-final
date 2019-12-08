@@ -1,0 +1,23 @@
+.text
+  @each $i, $decs in $text-sizes
+    $prop: 'font-size'
+    $val: map-get($decs, $prop)
+    &.is-#{$i}
+      #{$prop}: $val
+
+  @each $name, $color in $color-palette
+    &.is-#{$name}
+      color: $color
+
+      @if $name == 'primary'
+        .night-mode &
+          color: $secondary
+
+  &.is-uppercased
+    +uppercase(1px)
+
+  &.is-truncated
+    +truncate(100%)
+
+  &.is-spaced
+    +margin($bottom: $spacer * 0.5)

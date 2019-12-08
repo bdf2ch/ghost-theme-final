@@ -1,0 +1,123 @@
+{{!< default}}
+
+<main class="mainbar">
+  <div class="mainbar-list">
+
+    {{#post}}
+      <article class="mainbar-list-item has-full-width">
+        <div class="post-wrapper box">
+
+          <header class="post-header">
+            {{#is "post"}}
+              <div class="post-meta">
+                {{#primary_tag}}
+                  <a class="post-tag label is-primary" href="{{url}}">
+                    <span class="text is-8 is-white is-uppercased is-truncated"><b>{{name}}</b></span>
+                  </a>
+                {{/primary_tag}}
+                <span class="post-author text is-6 is-primary is-truncated"><b>{{primary_author.name}}</b></span>
+              </div>
+            {{/is}}
+
+            <h1 class="post-title">{{title}}</h1>
+
+            {{#is "post"}}
+              <div class="post-meta">
+                <time class="post-date text is-7 is-primary" datetime="{{date published_at format="YYYY-MM-DD"}}">
+                  <i class="far fa-clock"></i> &nbsp; {{date published_at format="<b>D/MM/YYYY</b> в HH:mm"}}
+                </time>
+              </div>
+            {{/is}}
+          </header>
+
+          <section class="post-content{{#is "post"}} js-post-body{{/is}}">
+            {{content}}
+
+            {{#is "post"}}
+              {{> "admin/last-paragraph"}}
+            {{/is}}
+          </section>
+
+        </div>
+      </article>
+    {{/post}}
+
+    {{#is "post"}}
+      <section class="mainbar-list-item has-full-width">
+       <div style="padding: 12px;background-color: #f2faff;box-shadow: inset 0 0 2px 1px #d8e8f2;" class="box">
+
+        {{> "banners/728x90"}}
+
+        <a class="post-card-excerpt" style="color: #4f7697;" href="/ads">Реклама на kod.ru</a>
+       </div>
+      </section>
+    {{/is}}
+    
+    {{#is "post"}}
+      <section class="mainbar-list-item has-full-width">
+        <div style="padding: 12px;" class="box">
+
+          <script async src="https://comments.app/js/widget.js" data-comments-app-website="AzpM4smn" data-limit="5" data-color="008DCD" data-dislikes="1"></script>
+
+        </div>
+      </section>
+    {{/is}}
+
+    {{#is "post"}}
+      <section class="mainbar-list-item has-full-width">
+       <div style="padding: 12px;background-color: #f2faff;box-shadow: inset 0 0 2px 1px #d8e8f2;" class="box">
+
+        <!-- Yandex.RTB R-A-285591-11 -->
+        <div id="yandex_rtb_R-A-285591-11"></div>
+            <script type="text/javascript">
+                (function(w, d, n, s, t) {
+                 w[n] = w[n] || [];
+                 w[n].push(function() {
+                 Ya.Context.AdvManager.render({
+                        blockId: "R-A-285591-11",
+                        renderTo: "yandex_rtb_R-A-285591-11",
+                        async: true
+                              });
+                          });
+                          t = d.getElementsByTagName("script")[0];
+                          s = d.createElement("script");
+                          s.type = "text/javascript";
+                          s.src = "//an.yandex.ru/system/context.js";
+                          s.async = true;
+                          t.parentNode.insertBefore(s, t);
+                      })(this, this.document, "yandexContextAsyncCallbacks");
+                  </script>
+
+              <a class="post-card-excerpt" style="color: #4f7697;" href="/ads">Реклама на kod.ru</a>
+              </div>
+            </section>
+          {{/is}}
+
+          <script type="text/javascript">
+              (function (a, b, c, d, e, f, g, h) {
+                   g = b.createElement(c);
+                   g.src = d;
+                   g.type = "application/javascript";
+                   g.async = !0;
+                   h = b.getElementsByTagName(c)[0];
+                   h.parentNode.insertBefore(g, h);
+                   a[f] = [];
+                   a[e] = function () {
+                       a[f].push(Array.prototype.slice.apply(arguments));
+                  }
+              }) (window, document, "script", (document.location.protocol === "https:"
+          ? "https:" : "http:") + "//cdn01.nativeroll.tv/js/seedr-player.min.js", "SeedrPlayer",
+          "seedrInit");
+          </script>
+          <script>
+              SeedrPlayer({   
+                      container: '.post-content',
+                      desiredOffset: 70,
+                      gid: '5ddcd4bb55299c1f4077e9e6',
+                      onError: function (e) { console.log(e); }  
+              });
+          </script>
+    
+
+  </div>
+</main>

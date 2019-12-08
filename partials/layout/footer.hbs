@@ -1,0 +1,34 @@
+<footer class="footer"> 
+
+  <div class="container">
+
+    <div class="masthead footer-list">
+
+      <div class="footer-list-item">
+        <div class="masthead-list">
+          <a class="masthead-list-item" href="{{@blog.url}}">{{> "global/logo"}}</a>
+          <a class="masthead-list-item" href="/about">О нас</a>
+          <a class="masthead-list-item" href="/ads">Реклама</a>
+          <a class="masthead-list-item" href="{{@blog.url}}">Код Дурова, <b>{{date format="YYYY"}}</b></a>
+        </div>
+      </div>
+
+      <div class="footer-list-item">
+        &nbsp;
+      </div>
+
+      <div class="footer-list-item">
+        <nav class="masthead-nav">
+          {{navigation}}
+        </nav>
+      </div>
+
+      <div class="footer-list-item">
+        <div class="masthead-social">
+          {{> "global/social" _names="true"}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>

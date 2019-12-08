@@ -1,0 +1,250 @@
+$expander: '.mainbar-list.is-expandable'
+$image-height-1: 140px
+$image-height-2: 220px
+$image-height-3: 300px
+
+
+.post-card-wrapper
+  background: top / contain no-repeat
+
+  #{$expander} .post-card &
+    background: top / 0 auto no-repeat
+    .post-card-meta
+      display: none
+
+  #{$expander} .post-card:nth-of-type(4n+1) &
+    background: top / contain no-repeat
+    .post-card-wrapper
+      background: top center / contain auto no-repeat
+    .post-card-meta
+      display: flex
+      min-height: $image-height-1
+      background-color: transparent
+
+
+  //background: top / 175% auto no-repeat
+  min-height: $image-height-1
+
+  +media-breakpoint-up(lg)
+    // Medium and large post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &,
+    #{$expander} .post-card:first-of-type &
+      background: center / cover no-repeat
+      box-shadow: inset 0 0 0 9999px rgba($overlay, 0.75)
+      height: 100%
+      .post-meta
+        display: flex !important
+
+    #{$expander} .post-card &
+      background: top / contain no-repeat
+      .post-card-meta
+        display: flex
+
+    // Medium post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &
+      +padding($spacer * 2 $spacer * 2.25)
+      min-height: $image-height-2
+
+    // Large post cards
+    #{$expander} .post-card:first-of-type &
+      +padding($spacer * 2.5 $spacer * 3.75 $spacer * 3.75)
+      min-height: $image-height-3
+
+.post-card-meta
+  +padding($spacer * 0.75 $spacer * 1.5)
+  +uppercase(1px)
+  align-items: flex-end
+  box-shadow: inset 0 $image-height-1 * -0.5 $image-height-1 rgba($overlay, 0.75)
+  color: $white
+  display: flex
+  font-size: 11px
+  font-weight: $global-font-weight-bold
+  min-height: $image-height-1
+  text-shadow: 0 1px 3px rgba($black, 0.5)
+  background-color: transparent
+  .tag-page &
+    min-height: $image-height-1 !important
+    background-color: transparent !important
+
+  // IE workaround
+  &::after
+    content: ''
+    display: block
+    font-size: 0
+    min-height: inherit
+
+  +media-breakpoint-up(lg)
+    // Medium and large post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &,
+    #{$expander} .post-card:first-of-type &
+      +padding(0)
+      align-items: stretch
+      box-shadow: none
+      color: rgba($white, 0.75)
+      font-size: 13px
+      min-height: auto
+
+    // Medium post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &
+      +margin($bottom: $spacer * 0.5)
+
+    // Large post cards
+    #{$expander} .post-card:first-of-type &
+      +margin($bottom: $spacer)
+
+.post-card-label
+  display: none
+  +media-breakpoint-up(lg)
+    display: flex
+
+.post-card-label,
+.post-card-date
+  +truncate(50%)
+
+.post-card-date
+  +margin($left: auto)
+  display: none
+  +media-breakpoint-up(lg)
+    display: flex
+
+  +media-breakpoint-up(lg)
+    // Medium and large post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &,
+    #{$expander} .post-card:first-of-type &
+      +margin($left: $spacer * 1.25)
+
+.post-card-body
+  +padding($spacer * 1.25 $spacer * 1.5 $spacer * 1.5)
+  background-color: $white
+  .post-card-meta_
+    padding-bottom: 12px
+    align-items: flex-end
+    box-shadow: inset 0 -70px 140px rgba(255, 255, 255, 0.75)
+    color: #fff
+    display: -webkit-box
+    display: -ms-flexbox
+    display: flex
+    font-size: 11px
+    font-weight: 500
+    min-height: 20px
+    background-color: #fff
+    .night-mode &
+      background-color: $night-mode-dark-gray
+      box-shadow: none
+    +media-breakpoint-up(lg)
+      display: none
+    .post-card-label_
+      max-width: 50%
+      overflow: hidden
+      border: 1px solid #008dcd
+      padding: 5px
+      border-radius: 2px
+      color: #008dcd
+      margin-right: 30px
+      text-transform: uppercase
+      .night-mode &
+        border-color: $night-mode-light-gray
+        color: $night-mode-light-gray
+    .post-card-date_
+      padding: 5px
+      font-size: 13px
+      color: #008dcd
+      text-align: left
+      margin-left: 0px
+      .night-mode &
+        color: $night-mode-light-gray
+
+  .night-mode &
+    background-color: $night-mode-dark-gray
+
+  +media-breakpoint-up(lg)
+    // Medium and large post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &,
+    #{$expander} .post-card:first-of-type &
+      +padding(0)
+      background-color: transparent
+      text-shadow: 0 1px 3px rgba($black, 0.5)
+
+    // Medium post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &
+
+    // Large post cards
+    #{$expander} .post-card:first-of-type &
+      +margin($right: 30%)
+
+.post-card-title
+  +margin($bottom: $spacer * 0.5)
+  color: $black-gray
+  font-size: 17px
+  font-weight: $global-font-weight-bold
+  line-height: 1.4
+
+  .night-mode &
+    color: $white
+
+  +media-breakpoint-up(lg)
+    // Medium and large post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &,
+    #{$expander} .post-card:first-of-type &
+      color: $white
+
+    // Medium post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &
+      +margin($bottom: $spacer * 1.25)
+      font-size: 23px
+
+    // Large post cards
+    #{$expander} .post-card:first-of-type &
+      +margin($bottom: $spacer * 2.25)
+      font-size: 29px
+
+.post-card-excerpt
+  color: $dark-gray
+  font-size: 13px
+  line-height: 1.5
+
+  .night-mode &
+    color: $night-mode-light-gray
+
+  +media-breakpoint-up(lg)
+    // Medium and large post cards
+    #{$expander} .post-card:nth-of-type(5n+2) &,
+    #{$expander} .post-card:nth-of-type(5n+3) &,
+    #{$expander} .post-card:first-of-type &
+      display: none
+
+.post-card-extra
+  display: none
+
+  +media-breakpoint-up(lg)
+    #{$expander} .post-card:first-of-type &
+      display: flex
+
+.post-card-button
+  +padding($left: $spacer * 4, $right: $spacer * 4)
+  +uppercase(3px)
+  background-color: $white
+  border-radius: $global-border-radius
+  color: mix($primary, $black, 75%)
+  font-size: 15px
+  font-weight: $global-font-weight-bold
+  line-height: $navbar-height
+
+.post-card-logo
+  $size: $navbar-height
+  +margin($left: $spacer * 2)
+  color: $white
+  width: $size
+  height: $size
+  display: flex
+  justify-content: center
+  align-items: center

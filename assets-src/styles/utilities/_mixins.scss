@@ -1,0 +1,76 @@
+@mixin sticky-top($top: 0, $z-index: 1020) {
+  @supports (position: sticky) {
+    position: sticky;
+    top: $top;
+    z-index: $z-index;
+  }
+}
+
+@mixin fixed-top($top: 0, $z-index: 1030) {
+  position: fixed;
+  top: $top;
+  z-index: $z-index;
+}
+
+@mixin order-first() {
+  order: -1;
+}
+
+@mixin order-last() {
+  order: $grid-columns + 1;
+}
+
+@mixin margin(
+  $all: null, $top: null, $right: null, $bottom: null, $left: null
+) {
+  margin: $all;
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+@mixin padding(
+  $all: null, $top: null, $right: null, $bottom: null, $left: null
+) {
+  padding: $all;
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+@mixin antialiasing() {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin uppercase($letter-spacing: null) {
+  letter-spacing: $letter-spacing;
+  text-transform: uppercase;
+}
+
+@mixin truncate($max-width) {
+  max-width: $max-width;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-size($size, $important: false) {
+  $decs: map-get($text-sizes, $size);
+  @each $prop, $val in $decs {
+    @if $important {
+      #{$prop}: $val !important;
+    } @else {
+      #{$prop}: $val;
+    }
+  }
+}
+
+@mixin no-user-select() {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}

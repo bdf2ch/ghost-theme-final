@@ -1,0 +1,103 @@
+.featured-posts
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  margin-bottom: 10px
+  +media-breakpoint-up(lg)
+    display: none
+  .featured-posts-expander-out
+    display: none
+    width: 45px
+    height: 45px
+    border-radius: 50%
+    cursor: pointer
+    background-color: white
+    .night-mode &
+      background-color: $night-mode-dark-gray !important
+      color: $night-mode-light-gray
+      border-color: $night-mode-black-gray !important
+  &.expanded
+    .featured-posts-expander-out
+      display: flex
+      flex-direction: row
+      justify-content: center
+      align-items: center
+      margin-top: -23px
+      border: 5px solid #F3F4F6
+    article
+      &:first-of-type
+        display: none
+      &:not(:first-child)
+        display: flex
+
+  article
+    display: flex
+    flex-direction: column
+    width: 100%
+    .featured-post
+      padding: 10px
+      &:nth-child(1)
+        padding: 12px 24px 10.4px
+      &:nth-child(2)
+        width: calc(100% - 10px)
+        height: 8px
+        padding: 0px
+        margin-left: auto
+        margin-right: auto
+        margin-top: -5px
+      &:nth-child(3)
+        width: calc(100% - 20px)
+        height: 8px
+        padding: 0px
+        margin-left: auto
+        margin-right: auto
+        margin-top: -5px
+    &:not(:first-child)
+      display: none
+
+  .featured-post
+    display: flex
+    flex-direction: column
+    width: 100%
+    padding: 10px
+    margin-bottom: 5px
+    background: white
+    box-shadow: 0 0 2px rgba(0,0,0,.05), 0 1px rgba(0,0,0,.02)
+    &:nth-of-type(1)
+      //padding: 12px 24px 10.4px
+    .night-mode &
+      background-color: $night-mode-dark-gray !important
+      color: $night-mode-light-gray
+    .featured-post-title
+      .night-mode &
+        color: white
+    .featured-post-meta
+      display: flex
+      flex-direction: row
+      justify-content: space-between
+      width: 100%
+      padding-top: 5px
+      color: #008dcd
+      .night-mode &
+        color: $night-mode-light-gray
+      .featured-post-meta-container
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+      .featured-post-tag
+        //color: #008dcd !important
+        .night-mode &
+          color: $night-mode-light-gray
+      .featured-post-date
+        //color: #008dcd !important
+        margin-left: 5px
+        .night-mode &
+          color: $night-mode-light-gray
+      .featured-post-expander
+        justify-self: flex-end
+        //color: #008dcd
+        .night-mode &
+          color: $night-mode-light-gray
+
+

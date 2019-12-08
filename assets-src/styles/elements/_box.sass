@@ -1,0 +1,25 @@
+.box
+  animation: fade-in 250ms
+  background-color: $white
+  box-shadow: $global-box-shadow
+  display: block
+  height: 100%
+  overflow: hidden
+
+  @for $i from 1 through 5
+    @each $direction, $positions in (x: (left, right), y: (top, bottom))
+      &.has-#{$direction}-padding-#{$i}
+        @each $position in $positions
+          padding-#{$position}: $spacer * 0.25 * $i
+
+  .night-mode &
+    background-color: $night-mode-dark-gray
+
+  +media-breakpoint-up(md)
+    border-radius: $global-border-radius
+
+a.box
+  transition: box-shadow $global-transition-duration
+
+  &:hover
+    box-shadow: $global-box-shadow-hover
